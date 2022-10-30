@@ -1,6 +1,6 @@
-# Fusion 360 Tab Joint & Living Hinge Generator ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+# Fusion 360 Tab Joint & Living Hinge Generator 
 
-*A plugin for Autodesk's Fusion 360 CAD-CAM software.*
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)*A plugin for Autodesk's Fusion 360 CAD-CAM software.*
 
 As a Fusion 360 instructor and active maker, I realized the need for an automated tab joints and living hinges generator. I wrote those two plugins to accelerate the process in the native environment.
 
