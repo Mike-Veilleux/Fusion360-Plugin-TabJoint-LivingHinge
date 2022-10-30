@@ -2,8 +2,7 @@
 
 *A plugin for Autodesk's Fusion 360 CAD-CAM software.*
 
-
-I used to teach and use Fusion 360 on a daily basis and realized that there was a lot of time spent on creating tab joints and lining hinges. I wrote those two plugins to accelerate the process in the native environment.
+As a Fusion 360 instructor, I quickly realized that there was a lot of time spent on creating tab joints and lining hinges. I wrote those two plugins to accelerate the process in the native environment.
 
 Tab Joint transforms a sketchline into a male or female tab joint pattern where you can configure many characteristics.
 
@@ -14,4 +13,6 @@ While writing those two plugins, I've learned a lot about the mathematics relate
 One of the best features, according to the users, is the possibility to define a kerf tolerance for the laser cutter.
 
 This project is now limited to the Sketch environment only but has the possibility to expand to the Solid environment.
+
+Follow this [link](https://blogs.discovery.edu.hk/aap/tabs-and-living-hinge-plugin/) for installation and a small project. 
 
