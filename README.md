@@ -1,4 +1,4 @@
-# Fusion 360 Tab Joint & Living Hinge Generator 
+# Fusion 360 Tab Joint & Living Hinge Generator ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 
 *A plugin for Autodesk's Fusion 360 CAD-CAM software.*
 
