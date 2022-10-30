@@ -6,7 +6,7 @@ As a Fusion 360 instructor and active maker, I realized the need for an automate
 
 ## Install
 
-This repository is the actual file and folder structure necessary for installation. Just copy the folder on your machine in the Fusion plugin folder and its done! 
+This repository represent the file and folder structure necessary for installation. Just copy the folder on your machine in the Fusion plugin folder and its done! 
 
 **Windows**
 ```
