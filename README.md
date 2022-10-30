@@ -1,8 +1,14 @@
-# Tab Joint & Living Hinge Generator 
+# Fusion360 Tab Joint & Living Hinge Generator 
 
 *A plugin for Autodesk's Fusion 360 CAD-CAM software.*
 
-As a Fusion 360 instructor, I quickly realized that there was a lot of time spent on creating tab joints and lining hinges. I wrote those two plugins to accelerate the process in the native environment.
+As a Fusion 360 instructor and a active maker, I realized the need for an automated tab joints and lining hinges generator. I wrote those two plugins to accelerate the process in the native environment.
+
+## Install
+
+This repository is the actual file and folder structure necessary for installation. Just copy the folder on your machine in the Fusion plugin folder and its done! 
+for windows copy to:
+    C:\Users\Mike\Documents\Fusion 360\scripts
 
 Tab Joint transforms a sketchline into a male or female tab joint pattern where you can configure many characteristics.
 
