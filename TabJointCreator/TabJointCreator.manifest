@@ -1,0 +1,13 @@
+{
+	"autodeskProduct":	"Fusion360",
+	"type":	"addin",
+	"id":	"0e8736f3-dd38-4bf2-ba72-83334bb60ab5",
+	"author":	"MVX",
+	"description":	{
+		"":	"Tab joint creator for laser cutting"
+	},
+	"version":	"1.0",
+	"runOnStartup":	false,
+	"supportedOS":	"windows|mac",
+	"editEnabled":	true
+}

@@ -1,0 +1,13 @@
+{
+	"autodeskProduct":	"Fusion360",
+	"type":	"addin",
+	"id":	"1562522a-04cd-4cc1-89e3-570a0034068a",
+	"author":	"Mike Veilleux",
+	"description":	{
+		"":	""
+	},
+	"version":	"1.0.0",
+	"runOnStartup":	false,
+	"supportedOS":	"windows|mac",
+	"editEnabled":	true
+}
