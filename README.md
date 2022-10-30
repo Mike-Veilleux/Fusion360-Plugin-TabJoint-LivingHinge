@@ -8,7 +8,7 @@ As a Fusion 360 instructor and a active maker, I realized the need for an automa
 
 This repository is the actual file and folder structure necessary for installation. Just copy the folder on your machine in the Fusion plugin folder and its done! 
 for windows copy to:
-    C:\Users\Mike\Documents\Fusion 360\scripts
+<code>C:\Users\Mike\Documents\Fusion 360\scripts</code>
 
 Tab Joint transforms a sketchline into a male or female tab joint pattern where you can configure many characteristics.
 
