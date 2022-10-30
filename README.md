@@ -10,7 +10,7 @@ This repository is the actual file and folder structure necessary for installati
 
 **Windows**
 ```
-C:\Users\Mike\Documents\Fusion 360\scripts</code>
+C:\Users\%USERNAME%\AppData\Roaming\Autodesk\Autodesk Fusion 360\API\AddIns
 ```
 
 Tab Joint transforms a sketchline into a male or female tab joint pattern where you can configure many characteristics.
