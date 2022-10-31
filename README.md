@@ -16,7 +16,7 @@ C:\Users\%USERNAME%\AppData\Roaming\Autodesk\Autodesk Fusion 360\API\AddIns
 ```
 **Mac**
 ```
-/Users/$User/Library/Application Support/Autodesk/Autodesk Fusion 360/API/AddIns
+~/Library/Application Support/Autodesk/Autodesk Fusion 360/API/AddIns
 ```
 Follow this [link](https://blogs.discovery.edu.hk/aap/tabs-and-living-hinge-plugin/) for the installation and a small project video tutorial. 
 
