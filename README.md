@@ -8,9 +8,9 @@ As a Fusion 360 instructor and active maker, I realized the need for an automate
 
 ## Description
 
-Tab Joint transforms a sketchline into a male or female tab joint pattern where you can configure many characteristics.
+**Tab Joint** transforms a sketchline into a male or female tab joint pattern where you can configure many characteristics.
 
-Living Hinge creates a sketchline pattern within a user defined area where you can configure many characteristics.
+**Living Hinge** creates a sketchline pattern within a user defined area where you can configure many characteristics.
 
 
 ## Install
