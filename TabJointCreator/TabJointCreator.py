@@ -135,6 +135,8 @@ class TabJoinCommandCreatedEventHandler(adsk.core.CommandCreatedEventHandler):
         # flipLineDef = inputs.addBoolValueInput('flipLineID', 'Flip Tab Side', bool(pref.Flip), '', bool(pref.Flip))
         # keepSelectedLinesDef = inputs.addBoolValueInput('keepSelectedLinesID', 'Keep Selected Lines', bool(pref.KeepSelectedLines), '', bool(pref.KeepSelectedLines))
 
+        unitLengthDef = inputs.addFloatSpinnerCommandInput('unitLength', 'Tab Length', 'mm', 0.0, 1000.0, 1.0, float(pref.UnitLength))
+
         materialThicknessDef = inputs.addFloatSpinnerCommandInput('mt', 'Material Thickness', 'mm', 0.0, 1000.0, 1.0, float(pref.MaterialThickness))
 
         kerfDef = inputs.addFloatSpinnerCommandInput('kerfID', 'Kerf', 'micron', 0.00, 5000, 50, float(pref.Kerf))
@@ -170,6 +172,7 @@ class TabJointCommandExecutePreviewHandler(adsk.core.CommandEventHandler):
             flipLine = inputs.itemById('flipLineID').value
             innerFit = inputs.itemById('innerFitID').value
             keepSelectedLines = inputs.itemById('keepSelectedLinesID').value
+            unitLength = inputs.itemById('unitLength').value
             materialThickness = inputs.itemById('mt').value
             kerf = inputs.itemById('kerfID').value
 
@@ -189,6 +192,7 @@ class TabJointCommandExecutePreviewHandler(adsk.core.CommandEventHandler):
             pref.Flip = flipLine
             pref.InnerFit = innerFit
             pref.KeepSelectedLines = keepSelectedLines
+            pref.UnitLength = unitLength * 10
             pref.MaterialThickness = materialThickness * 10
             pref.Kerf = kerf * 10000
             pref.WritePref()
@@ -197,7 +201,7 @@ class TabJointCommandExecutePreviewHandler(adsk.core.CommandEventHandler):
             # -------------------------------------------
             # Let's do it!!!
             # -------------------------------------------
-            ProcessAllLines(materialThickness, lines, flipLine, innerFit, keepSelectedLines, kerf, tabType, True)
+            ProcessAllLines(unitLength, materialThickness, lines, flipLine, innerFit, keepSelectedLines, kerf, tabType, True)
 
 
 
@@ -223,6 +227,7 @@ class TabJointCommandExecuteHandler(adsk.core.CommandEventHandler):
         flipLine = inputs.itemById('flipLineID').value
         innerFit = inputs.itemById('innerFitID').value
         keepSelectedLines = inputs.itemById('keepSelectedLinesID').value
+        unitLength = inputs.itemById('unitLength').value
         materialThickness = inputs.itemById('mt').value
         kerf = inputs.itemById('kerfID').value
 
@@ -240,6 +245,7 @@ class TabJointCommandExecuteHandler(adsk.core.CommandEventHandler):
         pref.Flip = flipLine
         pref.InnerFit = innerFit
         pref.KeepSelectedLines = keepSelectedLines
+        pref.UnitLength = unitLength * 10
         pref.MaterialThickness = materialThickness * 10
         pref.Kerf = kerf * 10000
         pref.WritePref()
@@ -248,7 +254,7 @@ class TabJointCommandExecuteHandler(adsk.core.CommandEventHandler):
         # -------------------------------------------
         # Let's do it!!!
         # -------------------------------------------
-        ProcessAllLines(materialThickness, lines, flipLine, innerFit, keepSelectedLines, kerf, tabType, False)
+        ProcessAllLines(unitLength, materialThickness, lines, flipLine, innerFit, keepSelectedLines, kerf, tabType, False)
 
 
 #endregion
@@ -259,20 +265,20 @@ class TabJointCommandExecuteHandler(adsk.core.CommandEventHandler):
 #region Main Methods
 
 
-def ProcessAllLines(_materialThickness, _lines, _flipLine, _innerFit, _keepSelectedLines, _kerf, _tabType, _isPreviewModel):
+def ProcessAllLines(_unitLength, _materialThickness, _lines, _flipLine, _innerFit, _keepSelectedLines, _kerf, _tabType, _isPreviewModel):
 
     sketch = adsk.fusion.Sketch.cast(app.activeEditObject)
     sketch.isComputeDeferred = True
 
     # Loop each line in collection and create tabs
     for line in _lines:
-        CreateTabJoint(_materialThickness, line, _flipLine, _innerFit, _keepSelectedLines, _kerf, _tabType, _isPreviewModel)
+        CreateTabJoint(_unitLength, _materialThickness, line, _flipLine, _innerFit, _keepSelectedLines, _kerf, _tabType, _isPreviewModel)
 
     sketch.isComputeDeferred = False
 
 
 
-def CreateTabJoint(_materialThickness, _line, _flipLine, _innerFit , _keepSelectedLines, _kerf, _tabType, _isPreviewModel):
+def CreateTabJoint(_unitLength, _materialThickness, _line, _flipLine, _innerFit , _keepSelectedLines, _kerf, _tabType, _isPreviewModel):
 
     sketch = adsk.fusion.Sketch.cast(app.activeEditObject)
     lines = sketch.sketchCurves.sketchLines
@@ -284,7 +290,7 @@ def CreateTabJoint(_materialThickness, _line, _flipLine, _innerFit , _keepSelect
     materialThickness = round(float(_materialThickness), roundingPrecision)
     line = adsk.fusion.SketchLine.cast(_line)
     safeSide = materialThickness
-    unitLength = round(materialThickness * 2, roundingPrecision)
+    unitLength = round(float(_unitLength), roundingPrecision)
 
 
     # ------------------------------------------
@@ -540,6 +546,7 @@ class Pref:
         self.Flip = 'False'
         self.InnerFit = 'False'
         self.KeepSelectedLines = 'False'
+        self.UnitLength = 6
         self.MaterialThickness = 3
         self.Kerf = 200
 
@@ -552,6 +559,7 @@ class Pref:
                            'Flip',
                            'InnerFit',
                            'KeepSelectedLines',
+                           'UnitLength',
                            'MaterialThickness',
                            'Kerf']
 
@@ -559,6 +567,7 @@ class Pref:
                           'Flip': self.Flip,
                           'InnerFit': self.InnerFit,
                           'KeepSelectedLines': self.KeepSelectedLines,
+                          'UnitLength': self.UnitLength,
                           'MaterialThickness': self.MaterialThickness,
                           'Kerf': self.Kerf}]
 
@@ -584,6 +593,7 @@ class Pref:
                     self.Type = row["Type"]
                     self.Flip = row["Flip"]
                     self.KeepSelectedLines = row["KeepSelectedLines"]
+                    self.UnitLength = row["UnitLength"]
                     self.MaterialThickness = row["MaterialThickness"]
                     self.Kerf = row["Kerf"]
                 else:
@@ -596,6 +606,7 @@ class Pref:
                        'Flip',
                        'InnerFit',
                        'KeepSelectedLines',
+                       'UnitLength',
                        'MaterialThickness',
                        'Kerf']
 
@@ -603,6 +614,7 @@ class Pref:
                       'Flip': self.Flip,
                       'InnerFit': self.InnerFit,
                       'KeepSelectedLines': self.KeepSelectedLines,
+                      'UnitLength': self.UnitLength,
                       'MaterialThickness': self.MaterialThickness,
                       'Kerf': self.Kerf}]
 
