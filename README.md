@@ -32,7 +32,7 @@ This project is now limited to the Sketch environment. The next step is to expan
 
 ## License
 
-This project is licesed unde GNU.
+This project is licesed under GPL.
 
 
 
