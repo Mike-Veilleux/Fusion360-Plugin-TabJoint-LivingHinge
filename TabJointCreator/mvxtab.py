@@ -5,6 +5,7 @@ class Pref2File:
         self.Type = 'Male'
         self.Flip = 'False'
         self.KeepSelectedLines = 'False'
+        self.UnitLength = 6
         self.MaterialThickness = 3
         self.Kerf = 200
 
@@ -16,12 +17,14 @@ class Pref2File:
             csv_columns = ['Type',
                            'Flip',
                            'KeepSelectedLines',
+                           'UnitLength',
                            'MaterialThickness',
                            'Kerf']
 
             dict_data = [{'Type': self.Type,
                           'Flip': self.Flip,
                           'KeepSelectedLines': self.KeepSelectedLines,
+                          'UnitLength': self.UnitLength,
                           'MaterialThickness': self.MaterialThickness,
                           'Kerf': self.Kerf}]
 
@@ -47,6 +50,7 @@ class Pref2File:
                     self.Type = row["Type"]
                     self.Flip = row["Flip"]
                     self.KeepSelectedLines = row["KeepSelectedLines"]
+                    self.UnitLength = row["UnitLength"]
                     self.MaterialThickness = row["MaterialThickness"]
                     self.Kerf = row["Kerf"]
                 else:
@@ -58,12 +62,14 @@ class Pref2File:
         csv_columns = ['Type',
                        'Flip',
                        'KeepSelectedLines',
+                       'UnitLength',
                        'MaterialThickness',
                        'Kerf']
 
         dict_data = [{'Type': self.Type,
                       'Flip': self.Flip,
                       'KeepSelectedLines': self.KeepSelectedLines,
+                      'UnitLength': self.UnitLength,
                       'MaterialThickness': self.MaterialThickness,
                       'Kerf': self.Kerf}]
 
@@ -79,7 +85,7 @@ class Pref2File:
             print("I/O error")
 
 
-def CreateTabJoint(_materialThickness, _line, _flipLine , _keepSelectedLines, _kerf, _tabType, _isPreviewModel):
+def CreateTabJoint(_unitLength, _materialThickness, _line, _flipLine , _keepSelectedLines, _kerf, _tabType, _isPreviewModel):
 
     sketch = adsk.fusion.Sketch.cast(app.activeEditObject)
     lines = sketch.sketchCurves.sketchLines
